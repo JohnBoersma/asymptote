@@ -1,0 +1,18 @@
+settings.outformat="png";
+settings.render=16;
+import three;
+size(4cm);
+currentprojection =
+orthographic(1,10,1);
+for (int theta = 0; theta < 360; theta += 90) {
+/* Rotate by ’angle’ degrees about the line u--v */
+draw( rotate(angle=theta, u=(0,0,-1), v=(0,1,-1)) *
+unithemisphere, surfacepen=white);
+}
+/* Rotate by 180 degrees about the y-axis , then shift three
+units along the x-axis and double the height*/
+draw( scale(1,1,2) * shift(3X) * rotate(180, Y) * unitcone,
+surfacepen=white);
+/* illustrating more shifts */
+draw(shift(3,0,0) * unitcylinder, surfacepen = white);
+draw(shift(3,0,1) * unitdisk, surfacepen = emissive(white));
